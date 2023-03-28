@@ -20,10 +20,10 @@ a:hover {
 
 body {
   margin: 0 auto;
-  display: flex;
   max-width: 1600px;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
