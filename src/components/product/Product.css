@@ -19,7 +19,7 @@
     font-weight: 300;
     height: 65px;
 }
-.product-price, .product-seller, .product-rating{
+.product-price, .product-seller, .product-rating , .product-unit{
     font-weight: 300;
 }
 
