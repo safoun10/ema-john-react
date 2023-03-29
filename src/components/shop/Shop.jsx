@@ -1,3 +1,5 @@
+import { faArrowRight, faArrowRightArrowLeft, faDrum, faDumpster, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import Product from "../product/Product";
 import("./Shop.css");
@@ -48,8 +50,12 @@ const Shop = () => {
         <div className="grand-total">Grand Total : ${cart.length}</div>
 
         <div className="btn-s">
-          <button className="btn-clear">Clear Cart</button>
-          <button className="btn-review">Review Order</button>
+          <button className="btn-clear">
+            Clear Cart <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+          </button>
+          <button className="btn-review">
+            Review Order <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+          </button>
         </div>
       </div>
     </div>
