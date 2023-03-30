@@ -1,6 +1,7 @@
 import { faArrowRight, faArrowRightArrowLeft, faDrum, faDumpster, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import { addToDb, getShoppingCart } from "../../utilities/fakedb";
 import Cart from "../cart/Cart";
 import Product from "../product/Product";
 import("./Shop.css");
@@ -16,14 +17,17 @@ const Shop = () => {
       .then((data) => setProducts(data));
   }, []);
 
+  useEffect( () => {
+    const storedCart = getShoppingCart();
+    console.log(storedCart);
+  } ,[])
+
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
     const newCart = [...cart, product];
     setCart(newCart);
-    console.log(product);
-    console.log(cart);
-    console.log(newCart);
+    addToDb(product.id);
   };
 
   return (
