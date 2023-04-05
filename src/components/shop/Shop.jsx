@@ -13,9 +13,9 @@ const Shop = () => {
 
     const onlineAPI = "https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json";
 
-    // const localJson = "../../../public/products.json";
+    const localJson = "products.json";
 
-    fetch(onlineAPI)
+    fetch(localJson)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
