@@ -15,7 +15,7 @@ const Shop = () => {
 
     const localJson = "products.json";
 
-    fetch(localJson)
+    fetch(onlineAPI)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
