@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import Cart from "../cart/Cart";
 import "./Orders.css"
 import ReviewItem from "../reviewItem/ReviewItem";
+import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
 
 const Orders = () => {
     const products = useLoaderData();
@@ -13,6 +14,12 @@ const Orders = () => {
     const handleRemoveItem = (id) => {
         const remaining = cart.filter(product => product.id !== id);
         setCart(remaining);
+        removeFromDb(id);
+    }
+
+    const handleClearCart = () => {
+        setCart([]);
+        deleteShoppingCart();
     }
 
 
@@ -30,7 +37,7 @@ const Orders = () => {
                 <div className="order-cart-header">Order Summary</div>
                 <Cart cart={cart}></Cart>
                 <div className="order-btn-s">
-                    <button className="btn-clear">
+                    <button onClick={handleClearCart} className="btn-clear">
                         Clear Cart <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
                     </button>
                     <button className="btn-review">

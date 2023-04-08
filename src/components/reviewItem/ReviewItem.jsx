@@ -14,7 +14,7 @@ const ReviewItem = ({ product , handleRemoveItem }) => {
                 <div>
                     <div>{product.name}</div>
                     <div>Price : ${product.price}</div>
-                    <div>Shipping Charge : ${product.shipping}</div>
+                    <div>Quantity : {product.quantity}</div>
                 </div>
                 <div onClick={() => handleRemoveItem(product.id)} className='icon-box'>
                     <FontAwesomeIcon className='fa-icon' icon={faTrash}></FontAwesomeIcon>
