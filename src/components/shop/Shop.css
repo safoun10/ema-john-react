@@ -61,5 +61,8 @@
 }
 .btn-review:hover{
     background-color: #fe9c09;
-    color: white;
+    color: white !important;
+}
+.btn-review > a:hover{
+    color: white !important;
 }
