@@ -20,10 +20,6 @@
     transition: .5s;
 }
 
-.signUpBox:hover {
-    scale: 1.005;
-}
-
 .title {
     font-size: 48px;
     text-align: center;

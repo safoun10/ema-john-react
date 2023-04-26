@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./SignUp.css";
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
+
+    // const [err , setErr] = useState("");
+
+    const handleSubmit = (event) => {
+
+
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+
+        if(password !== confirm){
+            toast.warning("Your confirmation password didn't match 🥲");
+            return;
+        }
+        else if(password.length < 8){
+            toast.error("SECURITY ALERT ⚠️⚠️⚠️");
+            toast.warning("Your password must be 8 characters or more 🙂");
+            return;
+        }
+
+        console.log(email , password , confirm);
+    }
+
+
     return (
         <div className='container'>
-            <div className='signUpBox'>
+            <form className='signUpBox' onSubmit={handleSubmit}>
 
                 <div className='title'> Sign Up </div>
 
@@ -22,7 +49,7 @@ const SignUp = () => {
 
                 <div className='input-box'>
                     <div className='tag'>Confirm Password</div>
-                    <input className='input' type="password" name="password" required />
+                    <input className='input' type="password" name="confirm" required />
                 </div>
 
                 <div>
@@ -40,13 +67,13 @@ const SignUp = () => {
                 </div>
 
                 <div>
-                    <button className='g-btn'>
+                    <button className='g-btn' type='submit'>
                         <img src="../../../src/images/google.svg" className='g-img' />
                         Continue with Google
                     </button>
                 </div>
 
-            </div>
+            </form>
         </div>
     );
 };

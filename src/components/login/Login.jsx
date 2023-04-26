@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div className='container'>
-            <div className='signUpBox'>
+            <form className='signUpBox'>
 
                 <div className='title'> Login </div>
 
@@ -34,13 +34,13 @@ const Login = () => {
                 </div>
 
                 <div>
-                    <button className='g-btn'>
+                    <button className='g-btn' type='submit'>
                         <img src="../../../src/images/google.svg" className='g-img' />
                         Continue with Google
                     </button>
                 </div>
 
-            </div>
+            </form>
         </div>
     );
 };

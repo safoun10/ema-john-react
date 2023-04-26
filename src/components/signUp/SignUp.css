@@ -19,9 +19,7 @@
     margin: 40px auto 80px auto;
     transition: .5s;
 }
-.signUpBox:hover {
-    scale: 1.005;
-}
+
 
 .title {
     font-size: 48px;
