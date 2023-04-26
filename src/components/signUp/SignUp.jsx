@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "./SignUp.css";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../provider/AuthProvider';
 
 const SignUp = () => {
 
-    // const [err , setErr] = useState("");
+    const {createUser} = useContext(AuthContext);
 
     const handleSubmit = (event) => {
 
@@ -27,7 +28,20 @@ const SignUp = () => {
             return;
         }
 
-        console.log(email , password , confirm);
+        createUser(email , password)
+        .then((res) => {
+            const loggedUser = res.user;
+            toast.success("Thanks for creating an account and welcome in our Ema-John family 😀😀")
+            console.log(loggedUser);
+            form.reset();
+        })
+        .catch((err) => {
+            toast.error(err.message);
+        })
+    }
+
+    const handleGoogleSignUp = () => {
+        toast("blah blah blah")
     }
 
 
@@ -53,7 +67,7 @@ const SignUp = () => {
                 </div>
 
                 <div>
-                    <button className="btn-sign-up">Sign-up</button>
+                    <button className="btn-sign-up" type='submit'>Sign-up</button>
                 </div>
 
                 <div>
@@ -67,7 +81,7 @@ const SignUp = () => {
                 </div>
 
                 <div>
-                    <button className='g-btn' type='submit'>
+                    <button className='g-btn' type='button' onClick={handleGoogleSignUp}>
                         <img src="../../../src/images/google.svg" className='g-img' />
                         Continue with Google
                     </button>
