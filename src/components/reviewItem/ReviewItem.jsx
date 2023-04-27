@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const ReviewItem = ({ product , handleRemoveItem }) => {
-    console.log(product);
     return (
         <div className='item'>
             <div className='img-box'>

@@ -32,7 +32,6 @@ const SignUp = () => {
         .then((res) => {
             const loggedUser = res.user;
             toast.success("Thanks for creating an account and welcome in our Ema-John family 😀😀")
-            console.log(loggedUser);
             form.reset();
         })
         .catch((err) => {

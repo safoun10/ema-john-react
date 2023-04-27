@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import "./Login.css";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Login = () => {
 
     const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = (event) =>{
         event.preventDefault();
@@ -17,14 +21,13 @@ const Login = () => {
 
         signIn(email , password)
         .then((res) => {
-            toast.success("You have Successfully logged in our platform !!");
+            toast.success("You have Successfully logged in to our platform !!");
             form.reset();
+            navigate(from , {replace : true});
         })
         .catch((err) => {
             toast.error(err.message);
         })
-
-        console.log(email , password);
     }
 
     return (
