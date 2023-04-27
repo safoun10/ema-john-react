@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import "./Login.css";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
@@ -6,28 +6,29 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const [show, setShow] = useState(false);
+    const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const from = location.state?.from?.pathname || "/";
 
-    const handleLogin = (event) =>{
+    const handleLogin = (event) => {
         event.preventDefault();
 
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
 
-        signIn(email , password)
-        .then((res) => {
-            toast.success("You have Successfully logged in to our platform !!");
-            form.reset();
-            navigate(from , {replace : true});
-        })
-        .catch((err) => {
-            toast.error(err.message);
-        })
+        signIn(email, password)
+            .then((res) => {
+                toast.success("You have Successfully logged in to our platform !!");
+                form.reset();
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                toast.error(err.message);
+            })
     }
 
     return (
@@ -43,7 +44,10 @@ const Login = () => {
 
                 <div className='input-box'>
                     <div className='tag'>Password</div>
-                    <input className='input' type="password" name="password" required />
+                    <input className='input' type={show ? "text" : "password"} name="password" required />
+                    <div style={{cursor: "pointer" , userSelect : "none" , padding : "0 5px"}} onClick={() => setShow(!show)}><small>{
+                        show ? <span>Hide password</span> : <span>Show Password</span>
+                    }</small></div>
                 </div>
 
                 <div>
