@@ -6,7 +6,7 @@ import AuthProvider, { AuthContext } from "../provider/AuthProvider";
 
 const Header = () => {
 
-  const {logOut} = useContext(AuthContext);
+  const {user , logOut} = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut();
@@ -23,8 +23,7 @@ const Header = () => {
         <Link to="/login">Login</Link>
         <Link to="/sign-up">Sign Up</Link>
       </div>
-      {/* <button onClick={handleLogOut}>Sign Out</button> */}
-      {/* {<span>Welcome , {user.displayName}</span>} */}
+      {user && <> <span className="user-email">{user.email}</span> <button className="log-out-user" onClick={handleLogOut}>Log Out</button> </>}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.header{
+.header {
     background-color: #1C2B35;
     display: flex;
     justify-content: space-between;
@@ -7,8 +7,22 @@
     padding: 0 9rem;
 }
 
-a{
+a {
     text-decoration: none;
     color: white;
     padding: 0 1.5rem;
-} 
+}
+
+.user-email {
+    color: white;
+}
+
+.log-out-user {
+    color: white;
+    background-color: #1C2B35;
+    border: 2px solid rgba(255, 255, 255, 0.196);
+}
+
+.log-out-user:hover {
+    border: 2px solid rgb(255, 255, 255);
+}
